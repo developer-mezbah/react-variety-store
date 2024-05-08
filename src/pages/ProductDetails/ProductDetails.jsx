@@ -4,7 +4,7 @@ import bgImg from "../../assets/images/ecommerce-2140604_1280.jpg";
 import Payment from "../../component/Payment";
 import ReuseableTitle from "../../component/ReuseableTitle";
 import { SinglePrduct } from "../../component/SingleProduct";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 
 const ProductDetails = () => {
   const { product, relatedProducts } = useLoaderData();
@@ -14,7 +14,7 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   return (
     <div>
-            <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>Product Details || Variety Store</title>
       </Helmet>
@@ -45,8 +45,13 @@ const ProductDetails = () => {
         <div>
           <h2 className="text-textColor text-2xl">{product?.name}</h2>
           <div className="mt-5 flex items-center gap-1">
-            <span className="text-themeColor text-4xl">${product?.price * quantity}</span>
-            <small className="text-textColor"> - ${product?.price * 1.5 * quantity}</small>
+            <span className="text-themeColor text-4xl">
+              ${product?.price * quantity}
+            </span>
+            <small className="text-textColor">
+              {" "}
+              - ${product?.price * 1.5 * quantity}
+            </small>
           </div>
           <div className="mb-5 mt-2.5 flex items-center">
             <svg
@@ -117,7 +122,7 @@ const ProductDetails = () => {
               </button>
             </div>
             {/* Payment button  */}
-            <Payment product={{...product, quantity: quantity}}/>
+            <Payment product={{ ...product, quantity: quantity }} />
           </div>
         </div>
       </div>

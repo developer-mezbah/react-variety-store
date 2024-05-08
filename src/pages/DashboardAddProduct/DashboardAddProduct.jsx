@@ -4,7 +4,7 @@ import { Label, TextInput, Textarea, Select } from "flowbite-react";
 import { UserContext } from "../../context/UserContext";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 
 const DashboardAddProduct = ({
   updateFormData,
@@ -30,7 +30,10 @@ const DashboardAddProduct = ({
     const description = form.description.value;
     const img = form.image.value;
     const categoryId = form.categoryId.value;
-    const categoryFilter = categories.find((item) => item._id == categoryId);
+     const categoryFilter = categories.find((item) => item._id == categoryId);
+     if (!categoryFilter) {
+      return toast.error("Choose Products Category.")
+     }
     const options = {
       method: updateFormData ? "PUT" : "POST",
       headers: {
@@ -78,29 +81,36 @@ const DashboardAddProduct = ({
   };
   return (
     <div>
-            <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>Add Products || Variety Store</title>
       </Helmet>
       <div className="flex justify-between items-center">
         <ReuseableTitle text="Add Product" />
-        {updateFormData ? <div onClick={() => setShowUpdateForm(false)} className="text-white flex gap-2 text-xl items-center bg-red-500 p-2 rounded-xl cursor-pointer">
-          Close Form{" "}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+        {updateFormData ? (
+          <div
+            onClick={() => setShowUpdateForm(false)}
+            className="text-white flex gap-2 text-xl items-center bg-red-500 p-2 rounded-xl cursor-pointer"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-          </svg>
-        </div> : ""}
+            Close Form{" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <form
         onSubmit={handleSubmit}
@@ -114,6 +124,7 @@ const DashboardAddProduct = ({
             placeholder="Write product name."
             name="name"
             defaultValue={updateFormData?.name}
+            required
           />
         </div>
         <div>
@@ -123,6 +134,7 @@ const DashboardAddProduct = ({
             id="price"
             placeholder="Write product price"
             defaultValue={updateFormData?.price}
+            required
           />
         </div>
         <div>
@@ -133,6 +145,7 @@ const DashboardAddProduct = ({
             placeholder="Input your number"
             name="number"
             defaultValue={updateFormData?.number}
+            required
           />
         </div>
         <div>
@@ -143,11 +156,12 @@ const DashboardAddProduct = ({
             id="address"
             placeholder="Write address"
             defaultValue={updateFormData?.address}
+            required
           />
         </div>
         <div>
           <Label htmlFor="category" value="Select your Product Category" />
-          <Select id="category" required name="categoryId">
+          <Select id="category" required name="categoryId" defaultValue="">
             {updateFormData ? (
               <option selected value={updateFormData?.categoryId}>
                 {updateFormData?.category}
@@ -172,6 +186,7 @@ const DashboardAddProduct = ({
             id="quantity"
             placeholder="Write quantity"
             defaultValue={updateFormData?.quantity}
+            required
           />
         </div>
         <div className="w-full">

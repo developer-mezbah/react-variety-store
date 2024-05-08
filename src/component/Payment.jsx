@@ -134,7 +134,7 @@ const Payment = ({ product }) => {
                 className="custom-input"
                 name="username"
                 readOnly
-                defaultValue={product.price}
+                defaultValue={product.price * product.quantity}
               />
             </div>
             <div className="w-full">
