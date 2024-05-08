@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+p{
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
+}
+h1, h2, h3, h4, h5, h6{
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+}
+a, button, span {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+}
+#root {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+body{
+  @apply bg-themeBg;
+}
+.header nav{
+  @apply bg-cardBg
+}
+
+.header nav ul li a{
+  @apply text-textColor;
+}
+.navbar-dropdown > div{
+  @apply bg-cardBg text-textColor;
+}
+.navbar-dropdown > div > ul > div, .navbar-dropdown > div > ul > li button{
+  @apply text-textColor hover:text-themeColor;
+}
+
+/* footer style  */
+.footer-img img{
+  @apply h-20;
+}
+.footer-text span{
+  @apply text-textColor;
+}
+
+/* reuseable-title */
+.reuseable-title{
+  position: relative;
+}
+.reuseable-title::before{
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 5px;
+  bottom: 0;
+  margin-bottom: -25px;
+  border-radius: 5px;
+  @apply bg-themeColor;
+}
+
+/* single-product */
+.single-product{
+  @apply bg-cardBg !important;
+}
+.single-product img{
+  max-height: 400px;
+  object-fit: cover;
+  object-position: 0% 0%;
+}
+.single-product h5, .single-product .price{
+  @apply text-textColor !important;
+}
+
+/* custom-input */
+.custom-input input{
+  @apply bg-cardBg border-textColor text-textColor w-full !important;
+}
+
+.drawar .inset-0{
+  display: none !important;
+}
+
+/* add-product */
+.add-product label{
+  @apply text-textColor;
+}
+.add-product input, .add-product textarea, .add-product select{
+  @apply text-textColor bg-cardBg;
+}
+
+/* Active navbar  */
+.active{
+  @apply bg-themeColor text-textColor rounded-md hover:bg-orange-600 hover:text-textColor !important;
+}
+
+/* Custom style of sweetalert  */
+.swal2-popup{
+  @apply bg-cardBg text-textColor;
+}
+
+.single-product img{
+  height: 400px !important;
+}
+
+.dashboard-nav{
+  @apply text-themeColor !important;
+}
+
+
+/* Custom scroll bar  */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-cardBg;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-themeColor rounded-xl;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-orange-500;
+}
