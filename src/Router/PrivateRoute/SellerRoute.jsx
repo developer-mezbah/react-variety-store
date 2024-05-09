@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 
 const SellerRoute = ({ children }) => {
   const [userData, setUserData] = useState("");
+  const [roleLoading, setRoleLoading] = useState(true);
   const { user, loading } = useContext(UserContext);
   const location = useLocation();
   useEffect(() => {
@@ -14,9 +15,10 @@ const SellerRoute = ({ children }) => {
       .then((res) => res.json())
       .then((data) => {
         setUserData(data);
+        setRoleLoading(false)
       });
   }, [user]);
-  if (loading) {
+  if (loading || roleLoading) {
     return <Loading />;
   }
   if (userData.role === "seller" && userData.verify === true) {
