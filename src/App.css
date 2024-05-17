@@ -72,7 +72,7 @@ body{
   @apply bg-cardBg !important;
 }
 .single-product img{
-  max-height: 400px;
+  max-height: 350px;
   object-fit: cover;
   object-position: 0% 0%;
 }

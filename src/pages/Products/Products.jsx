@@ -1,5 +1,6 @@
 import DataTable from "react-data-table-component";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
+import Loading from "../../component/Loading";
 const columns = [
   {
     name: "Title",
@@ -26,20 +27,20 @@ const data = [
 
 const Products = () => {
   return (
-<>
-<Helmet>
-                <meta charSet="utf-8" />
-                <title>Products</title>
-                <link rel="canonical" href="http://mysite.com/example" />
-            </Helmet>
-<DataTable
-      columns={columns}
-      data={data}
-      pagination
-      progressComponent={<h1>Loading...</h1>}
-      theme="solarized"
-    />
-</>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Products</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <DataTable
+        columns={columns}
+        data={data}
+        pagination
+        progressComponent={<Loading/>}
+        theme="solarized"
+      />
+    </>
   );
 };
 

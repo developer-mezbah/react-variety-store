@@ -8,7 +8,7 @@ import { UserContext } from "./../../context/UserContext";
 import EditIcon from "../../assets/svg/EditIcon";
 import DashboardAddProduct from "../DashboardAddProduct/DashboardAddProduct";
 import { DeleteAlert } from "../../Helper/DeleteAlert";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 
 const DashboardProducts = () => {
   const { user } = useContext(UserContext);
@@ -45,18 +45,22 @@ const DashboardProducts = () => {
       name: "Action",
       selector: (row) => (
         <div className="flex gap-2">
-          <button onClick={() => {
-            DeleteAlert(`${import.meta.env.VITE_HOST}/products/${row?._id}`, refetch)
-          }}>
-
+          <button
+            onClick={() => {
+              DeleteAlert(
+                `${import.meta.env.VITE_HOST}/products/${row?._id}`,
+                refetch
+              );
+            }}
+          >
             <Delete />
           </button>
           <button
             className="text-themeColor"
             onClick={() => {
               const clicktedData = data.filter((item) => item._id === row._id);
-              setUpdateFormData(clicktedData[0])
-              setShowUpdateForm(true)
+              setUpdateFormData(clicktedData[0]);
+              setShowUpdateForm(true);
             }}
           >
             <EditIcon />
@@ -67,18 +71,26 @@ const DashboardProducts = () => {
   ];
   return (
     <div>
-            <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>My-Products || Variety Store</title>
       </Helmet>
-      {!showUpdateForm ? <DataTable
-        columns={columns}
-        data={data}
-        title="Products"
-        pagination
-        progressComponent={<Loading />}
-        theme="solarized"
-      />: <DashboardAddProduct updateFormData={updateFormData} refetch={refetch} setShowUpdateForm={setShowUpdateForm}/>}
+      {!showUpdateForm ? (
+        <DataTable
+          columns={columns}
+          data={data}
+          title="Products"
+          pagination
+          progressComponent={<Loading />}
+          theme="solarized"
+        />
+      ) : (
+        <DashboardAddProduct
+          updateFormData={updateFormData}
+          refetch={refetch}
+          setShowUpdateForm={setShowUpdateForm}
+        />
+      )}
     </div>
   );
 };

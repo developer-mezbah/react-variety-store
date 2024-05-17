@@ -11,7 +11,7 @@ const PopularProducts = ({ data }) => {
         {data ? (
           data
             ?.slice(0, 6)
-            .map((item, index) => <SinglePrduct key={index} data={item} />)
+            .map((item, index) => <SinglePrduct key={index} data={item} index={index}/>)
         ) : (
           <Loading />
         )}
