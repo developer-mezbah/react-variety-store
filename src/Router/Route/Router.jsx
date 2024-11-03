@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/category/:id",
-        element: <PrivateRoute><Category /></PrivateRoute>,
+        element: <Category />,
         loader: async ({params}) => {
           return await fetch(`${import.meta.env.VITE_HOST}/category/${params.id}`);
         },

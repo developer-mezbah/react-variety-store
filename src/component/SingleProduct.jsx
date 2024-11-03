@@ -14,7 +14,7 @@ export function SinglePrduct({ data, index }) {
       transition={{ duration: 0.3, delay: index * 0.2 }}
     >
       <Card
-        className="max-w-sm single-product place-self-center w-full"
+        className="md:max-w-sm single-product place-self-center w-full"
         imgAlt={data?.name}
         imgSrc={data?.img}
       >

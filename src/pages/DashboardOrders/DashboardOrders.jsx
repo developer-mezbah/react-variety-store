@@ -26,7 +26,7 @@ const DashboardOrders = () => {
     {
       name: "Product Title",
       selector: (row) => (
-        <span className="text-sm text-textColor">{row?.name}</span>
+        <span className="text-sm text-textColor">{row?.name?.length > 30 ? row?.name.slice(0, 30)+ "...": row?.name}</span>
       ),
     },
     {
@@ -66,7 +66,7 @@ const DashboardOrders = () => {
         <meta charSet="utf-8" />
         <title>Orders || Variety Store</title>
       </Helmet>
-      <div>
+      <div className="">
         <DataTable
           columns={columns}
           data={data}

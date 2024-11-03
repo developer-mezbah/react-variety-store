@@ -31,6 +31,7 @@ const Header = () => {
                 alt="User settings"
                 img={user?.photoURL || avatar}
                 rounded
+                className="mr-5"
               />
             }
           >

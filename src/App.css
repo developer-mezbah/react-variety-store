@@ -136,3 +136,11 @@ body{
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-orange-500;
 }
+
+@media (max-width: 768px) {
+  .custom-outlet{
+    width: calc(100% - 90px) !important;
+    left: 80px !important;
+  }
+}
+

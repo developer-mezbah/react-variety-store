@@ -14,10 +14,13 @@ const SellerRoute = ({ children }) => {
     fetch(`${import.meta.env.VITE_HOST}/chack-role?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
-        setUserData(data);
-        setRoleLoading(false)
+        if (data) {
+          setUserData(data);
+          setRoleLoading(false);
+        }
       });
   }, [user]);
+
   if (loading || roleLoading) {
     return <Loading />;
   }

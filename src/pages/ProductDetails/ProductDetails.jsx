@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import bgImg from "../../assets/images/ecommerce-2140604_1280.jpg";
 import Payment from "../../component/Payment";
@@ -12,6 +12,14 @@ const ProductDetails = () => {
     (item) => item._id !== product._id
   );
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Scrolls instantly without animation
+    });
+  }, [])
+  
   return (
     <div>
       <Helmet>
@@ -46,11 +54,11 @@ const ProductDetails = () => {
           <h2 className="text-textColor text-2xl">{product?.name}</h2>
           <div className="mt-5 flex items-center gap-1">
             <span className="text-themeColor text-4xl">
-              ${product?.price * quantity}
+              ${parseFloat(product?.price * quantity).toFixed(2)}
             </span>
             <small className="text-textColor">
               {" "}
-              - ${product?.price * 1.5 * quantity}
+              - ${parseFloat(product?.price * 1.5 * quantity).toFixed(2)}
             </small>
           </div>
           <div className="mb-5 mt-2.5 flex items-center">
@@ -109,16 +117,16 @@ const ProductDetails = () => {
                 }}
                 className="bg-themeColor p-2 rounded-lg flex justify-center items-center text-white h-10 w-10 hover:bg-orange-500"
               >
-                <span className="-mt-1 font-bold">-</span>
+                <span className=" font-bold">-</span>
               </button>
-              <span className="text-textColor">{quantity}</span>
+              <span className="text-textColor">{quantity}</span>                             
               <button
                 onClick={() => {
                   setQuantity(quantity + 1);
                 }}
                 className="bg-themeColor p-2 rounded-lg flex justify-center items-center text-white h-10 w-10 hover:bg-orange-500"
               >
-                <span className="-mt-1 font-bold">+</span>
+                <span className="mt-1 font-bold">+</span>
               </button>
             </div>
             {/* Payment button  */}

@@ -79,14 +79,15 @@ const DashboardAddProduct = ({
       }
     }
   };
+  
   return (
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Add Products || Variety Store</title>
+        <title>{updateFormData ? "Update": "Add"} Products || Variety Store</title>
       </Helmet>
       <div className="flex justify-between items-center">
-        <ReuseableTitle text="Add Product" />
+        <ReuseableTitle text={`${updateFormData ? "Update": "Add"} Product`} />
         {updateFormData ? (
           <div
             onClick={() => setShowUpdateForm(false)}
@@ -114,7 +115,7 @@ const DashboardAddProduct = ({
       </div>
       <form
         onSubmit={handleSubmit}
-        className="mt-14 add-product grid grid-cols-2 gap-5"
+        className="mt-14 add-product grid md:grid-cols-2 gap-5"
       >
         <div>
           <Label htmlFor="productName">Product Name</Label>

@@ -16,7 +16,9 @@ const Login = () => {
   const { logIn, user } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname;
+  console.log(from);
+  
   useEffect(() => {
     if (user) {
       navigate("/");
